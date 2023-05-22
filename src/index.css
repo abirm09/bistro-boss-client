@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* cs = custom */
+.cs-container {
+    @apply max-w-7xl mx-auto px-2
+}
+
+.cs-footer {
+    @apply font-inter font-medium flex flex-col items-start md:items-center
+}
+
+.cs-footer-title {
+    @apply text-xl md:text-3xl
+}
+
+.cs-footer-subtitle {
+    @apply text-sm md:text-xl
+}
