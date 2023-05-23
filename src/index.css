@@ -18,3 +18,8 @@
 .cs-footer-subtitle {
     @apply text-sm md:text-xl
 }
+
+/* Swiper */
+.thumbs{
+    @apply flex justify-center
+}

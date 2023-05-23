@@ -8,6 +8,9 @@ export default {
         inter: ["Inter", "sans-serif"],
         raleway: ["Raleway", "sans-serif"],
       },
+      colors: {
+        "cs-primary": "#EEFF25",
+      },
     },
   },
   plugins: [require("daisyui")],
