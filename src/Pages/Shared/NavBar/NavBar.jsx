@@ -9,7 +9,7 @@ const NavBar = () => {
       <ActiveLink to="/">Home</ActiveLink>
       <ActiveLink to="/contact">Contact us</ActiveLink>
       <ActiveLink to="/menu">Our menu</ActiveLink>
-      <ActiveLink to="/shop">Our shop</ActiveLink>
+      <ActiveLink to="/Order/soup">Our shop</ActiveLink>
     </>
   );
   return (
@@ -21,7 +21,10 @@ const NavBar = () => {
               to="/"
               className="font-cinzel flex flex-col p-2 active:scale-95 transition-all rounded-lg text-white"
             >
-              <span className="font-black text-xl md:text-3xl"> BISTRO BOSS</span>
+              <span className="font-black text-xl md:text-3xl">
+                {" "}
+                BISTRO BOSS
+              </span>
               <span className="font-bold text-sm md:text-2xl">Restaurant</span>
             </Link>
           </div>

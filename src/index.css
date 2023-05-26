@@ -20,6 +20,26 @@
 }
 
 /* Swiper */
-.thumbs{
+.thumbs {
     @apply flex justify-center
 }
+
+.react-tabs__tab-list {
+    justify-content: center;
+    display: flex;
+border-bottom:0px !important;
+font-weight:bold;
+}
+
+
+.react-tabs__tab.react-tabs__tab--selected{
+color:#BB8506;
+}
+
+.react-tabs__tab{
+border:0 !important;
+}
+
+
+
+

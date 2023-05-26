@@ -1,0 +1,4 @@
+.featured-item {
+    background-image: url("https://i.ibb.co/ZSyHZTy/featured.jpg"), linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-blend-mode: overlay;
+}
