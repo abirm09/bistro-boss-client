@@ -1,15 +1,40 @@
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../components/ActiveLink/Activelink";
 import { HiBars3BottomRight, HiXMark } from "react-icons/hi2";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import useCart from "../../../hooks/useCart/useCart";
 const NavBar = () => {
+  const [cart] = useCart();
   const [menu, setMenu] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch(err => console.log(err));
+  };
   const navLink = (
     <>
       <ActiveLink to="/">Home</ActiveLink>
       <ActiveLink to="/contact">Contact us</ActiveLink>
       <ActiveLink to="/menu">Our menu</ActiveLink>
       <ActiveLink to="/Order/soup">Our shop</ActiveLink>
+      <ActiveLink to="/dashboard/userHome">Dashboard</ActiveLink>
+
+      {user ? (
+        <>
+          <li className="cursor-pointer">
+            <a onClick={handleLogOut}>Log out</a>
+          </li>
+          <button className="btn gap-2 btn-ghost">
+            <AiOutlineShoppingCart className="w-6 h-6" />
+            <div className="badge badge-secondary">{cart?.length || 0}</div>
+          </button>
+        </>
+      ) : (
+        <ActiveLink to="/login">Login</ActiveLink>
+      )}
     </>
   );
   return (
@@ -47,9 +72,7 @@ const NavBar = () => {
             </div>
           </div>
           <div className="hidden md:block">
-            <ul className="flex gap-10 font-inter font-extrabold text-white">
-              {navLink}
-            </ul>
+            <ul className="flex gap-10  text-white items-center">{navLink}</ul>
           </div>
         </div>
       </div>

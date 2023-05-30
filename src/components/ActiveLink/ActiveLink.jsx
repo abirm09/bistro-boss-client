@@ -1,10 +1,14 @@
 import { NavLink } from "react-router-dom";
 
-const ActiveLink = ({ to, children }) => {
+const ActiveLink = ({ to, children, color }) => {
   return (
     <li>
       <NavLink
-        className={({ isActive }) => (isActive ? "text-cs-primary" : "")}
+        className={({ isActive }) =>
+          `${
+            isActive ? `${color ? "text-red-700" : "text-cs-primary"}` : ""
+          } font-inter font-extrabold`
+        }
         to={to}
       >
         {children}
@@ -12,5 +16,4 @@ const ActiveLink = ({ to, children }) => {
     </li>
   );
 };
-
 export default ActiveLink;
