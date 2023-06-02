@@ -4,6 +4,7 @@ import { MdPayment } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 const MyCart = () => {
   const [cart, refetch] = useCart();
   const totalPrice = parseFloat(
@@ -45,9 +46,11 @@ const MyCart = () => {
             <h2>
               Total Price : <span className="text-red-600">$ {totalPrice}</span>
             </h2>
-            <button className="btn btn-ghost">
-              <MdPayment /> <span className="ml-2">Pay now</span>
-            </button>
+            <Link to="/dashboard/payment">
+              <button className="btn btn-ghost">
+                <MdPayment /> <span className="ml-2">Pay now</span>
+              </button>
+            </Link>
           </div>
           <div className="overflow-x-auto">
             <table className="table w-full font-raleway font-semibold">
