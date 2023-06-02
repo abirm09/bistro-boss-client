@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart/useCart";
 import { MdPayment } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 const MyCart = () => {
   const [cart, refetch] = useCart();
   const totalPrice = parseFloat(
@@ -33,6 +34,9 @@ const MyCart = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Bistro boss | My cart</title>
+      </Helmet>
       <SectionTitle subHeading="My Cart" title="Wanna add more" />
       <div className="bg-slate-50 p-4">
         <div>

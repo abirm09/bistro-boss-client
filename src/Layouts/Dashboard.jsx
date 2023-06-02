@@ -3,13 +3,20 @@ import {
   FaCalendarAlt,
   FaShoppingCart,
   FaMoneyCheck,
+  FaBook,
+  FaUsers,
 } from "react-icons/fa";
+import { ImSpoonKnife } from "react-icons/im";
+import { AiOutlineBars } from "react-icons/ai";
 import ActiveLink from "../components/ActiveLink/Activelink";
 import { Link, Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import useCart from "../hooks/useCart/useCart";
+import useAdmin from "../hooks/useAdmin/useAdmin";
 const Dashboard = () => {
   const [cart] = useCart();
+  // const isAdmin = false;
+  const [isAdmin] = useAdmin();
   return (
     <section className="cs-container">
       <div className="drawer drawer-mobile">
@@ -42,21 +49,43 @@ const Dashboard = () => {
                 </span>
               </Link>
             </li>
-            <ActiveLink color={true} to="/dashboard/userhome">
-              <FaHome /> User Home
-            </ActiveLink>
-            <ActiveLink color={true} to="/dashboard/reservation">
-              <FaCalendarAlt /> Reservation
-            </ActiveLink>
-            <ActiveLink color={true} to="/dashboard/paymenthistory">
-              <FaMoneyCheck /> Payment History
-            </ActiveLink>
-            <ActiveLink color={true} to="/dashboard/mycart">
-              <FaShoppingCart /> My Cart{" "}
-              <span className="badge badge-info">{cart?.length || 0}</span>
-            </ActiveLink>
+            {isAdmin?.admin ? (
+              <>
+                <ActiveLink color={true} to="/dashboard/adminhome">
+                  <FaHome /> Admin Home
+                </ActiveLink>
+                <ActiveLink color={true} to="/dashboard/additem">
+                  <ImSpoonKnife /> Add items
+                </ActiveLink>
+                <ActiveLink color={true} to="/dashboard/manageitems">
+                  <AiOutlineBars /> Manage items
+                </ActiveLink>
+                <ActiveLink color={true} to="/dashboard/adminhom">
+                  <FaBook /> Manage Bookings
+                </ActiveLink>
+                <ActiveLink color={true} to="/dashboard/allusers">
+                  <FaUsers /> All Users
+                </ActiveLink>
+              </>
+            ) : (
+              <>
+                <ActiveLink color={true} to="/dashboard/userhome">
+                  <FaHome /> User Home
+                </ActiveLink>
+                <ActiveLink color={true} to="/dashboard/reservation">
+                  <FaCalendarAlt /> Reservation
+                </ActiveLink>
+                <ActiveLink color={true} to="/dashboard/paymenthistory">
+                  <FaMoneyCheck /> Payment History
+                </ActiveLink>
+                <ActiveLink color={true} to="/dashboard/mycart">
+                  <FaShoppingCart /> My Cart{" "}
+                  <span className="badge badge-info">{cart?.length || 0}</span>
+                </ActiveLink>
+              </>
+            )}
             <div className="divider"></div>
-            <ActiveLink color={true} to="/dashboard/userhome">
+            <ActiveLink color={true} to="/">
               <FaHome /> User Home
             </ActiveLink>
           </ul>

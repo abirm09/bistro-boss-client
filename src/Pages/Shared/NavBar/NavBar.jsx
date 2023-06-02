@@ -3,12 +3,13 @@ import ActiveLink from "../../../components/ActiveLink/Activelink";
 import { HiBars3BottomRight, HiXMark } from "react-icons/hi2";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import useCart from "../../../hooks/useCart/useCart";
+import Cart from "./Cart";
+import DashBoard from "./DashBoard";
+
 const NavBar = () => {
-  const [cart] = useCart();
   const [menu, setMenu] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -20,17 +21,13 @@ const NavBar = () => {
       <ActiveLink to="/contact">Contact us</ActiveLink>
       <ActiveLink to="/menu">Our menu</ActiveLink>
       <ActiveLink to="/Order/soup">Our shop</ActiveLink>
-      <ActiveLink to="/dashboard/userHome">Dashboard</ActiveLink>
-
       {user ? (
         <>
+          <DashBoard />
           <li className="cursor-pointer">
             <a onClick={handleLogOut}>Log out</a>
           </li>
-          <button className="btn gap-2 btn-ghost">
-            <AiOutlineShoppingCart className="w-6 h-6" />
-            <div className="badge badge-secondary">{cart?.length || 0}</div>
-          </button>
+          <Cart />
         </>
       ) : (
         <ActiveLink to="/login">Login</ActiveLink>

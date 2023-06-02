@@ -11,6 +11,11 @@ import Reservation from "../../Pages/Dashboard/Reservation/Reservation";
 import PaymentHistory from "../../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import MyCart from "../../Pages/Dashboard/MyCart/MyCart";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AdminHome from "../../Pages/Dashboard/AdminHome/AdminHome";
+import AllUSers from "../../Pages/Dashboard/AllUsers/AllUSers";
+import AddItem from "../../Pages/Dashboard/AddItem/AddItem";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import ManageItem from "../../Pages/Dashboard/ManageItem/ManageItem";
 
 export const route = createBrowserRouter([
   {
@@ -62,6 +67,30 @@ export const route = createBrowserRouter([
       {
         path: "/dashboard/mycart",
         element: <MyCart />,
+      },
+      {
+        path: "adminhome",
+        element: <AdminHome />,
+      },
+      {
+        path: "allusers",
+        element: <AllUSers />,
+      },
+      {
+        path: "additem",
+        element: (
+          <AdminRoute>
+            <AddItem />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageitems",
+        element: (
+          <AdminRoute>
+            <ManageItem />
+          </AdminRoute>
+        ),
       },
     ],
   },

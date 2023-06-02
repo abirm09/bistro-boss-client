@@ -9,6 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import app from "../../Util/Firebase/Firebase.config";
+import axios from "axios";
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
@@ -37,6 +38,17 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, currentUSer => {
       setUser(currentUSer);
+      //get and send token
+      if (currentUSer?.email) {
+        axios
+          .post(`http://localhost:5000/jwt`, { email: currentUSer?.email })
+          .then(data => {
+            localStorage.setItem("access_token", data.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access_token");
+      }
       setLoading(false);
     });
     return () => {
